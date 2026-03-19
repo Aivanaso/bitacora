@@ -89,8 +89,8 @@ export async function getPendingSyncs(): Promise<PendingSync[]> {
   return invoke<PendingSync[]>("get_pending_syncs");
 }
 
-export async function testJiraConnection(): Promise<boolean> {
-  return invoke<boolean>("test_jira_connection");
+export async function testJiraConnection(): Promise<{ success: boolean; message: string }> {
+  return invoke<{ success: boolean; message: string }>("test_jira_connection");
 }
 
 export async function getSetting(key: string): Promise<string | null> {

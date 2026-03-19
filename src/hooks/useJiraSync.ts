@@ -32,9 +32,9 @@ export function useJiraSync() {
 
   const testConnection = useCallback(async () => {
     try {
-      const ok = await tauri.testJiraConnection();
-      setConnectionOk(ok);
-      return ok;
+      const result = await tauri.testJiraConnection();
+      setConnectionOk(result.success);
+      return result.success;
     } catch {
       setConnectionOk(false);
       return false;

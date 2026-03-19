@@ -66,10 +66,10 @@ export function SettingsForm({ onClearAll }: SettingsFormProps) {
     setTesting(true);
     setMessage(null);
     try {
-      const ok = await tauri.testJiraConnection();
+      const result = await tauri.testJiraConnection();
       setMessage({
-        type: ok ? "success" : "error",
-        text: ok ? "Connection successful." : "Connection failed.",
+        type: result.success ? "success" : "error",
+        text: result.message,
       });
     } catch (err) {
       setMessage({

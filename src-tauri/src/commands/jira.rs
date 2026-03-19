@@ -31,9 +31,9 @@ fn get_setting(db: &rusqlite::Connection, key: &str) -> Result<String, String> {
 }
 
 fn build_jira_client(db: &rusqlite::Connection) -> Result<JiraClient, String> {
-    let base_url = get_setting(db, "jira_base_url")?;
+    let base_url = get_setting(db, "jira_url")?;
     let email = get_setting(db, "jira_email")?;
-    let token = get_setting(db, "jira_api_token")?;
+    let token = get_setting(db, "jira_token")?;
     Ok(JiraClient::new(&base_url, &email, &token))
 }
 
